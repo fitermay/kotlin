@@ -436,7 +436,7 @@ class ShortenReferences(val options: (KtElement) -> Options = { Options.DEFAULT 
             val receiver = element.receiverExpression
             if (receiver !is KtThisExpression && bindingContext[BindingContext.QUALIFIER, receiver] == null) return AnalyzeQualifiedElementResult.Skip
 
-            if (PsiTreeUtil.getParentOfType(
+            if (PsiTreeUtil.getParentOfType<KtElement>(
                     element,
                     KtImportDirective::class.java, KtPackageDirective::class.java) != null) return AnalyzeQualifiedElementResult.Skip
 
@@ -605,7 +605,7 @@ class ShortenReferences(val options: (KtElement) -> Options = { Options.DEFAULT 
         override fun analyzeQualifiedElement(element: KtDotQualifiedExpression, bindingContext: BindingContext): AnalyzeQualifiedElementResult {
             val receiver = element.receiverExpression
 
-            if (PsiTreeUtil.getParentOfType(
+            if (PsiTreeUtil.getParentOfType<KtElement>(
                     element,
                     KtImportDirective::class.java, KtPackageDirective::class.java) != null) return AnalyzeQualifiedElementResult.Skip
 

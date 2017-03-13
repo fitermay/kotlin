@@ -45,7 +45,6 @@ import org.jetbrains.kotlin.cli.common.arguments.K2JSCompilerArguments;
 import org.jetbrains.kotlin.cli.common.arguments.K2JVMCompilerArguments;
 import org.jetbrains.kotlin.cli.common.arguments.K2JsArgumentConstants;
 import org.jetbrains.kotlin.config.*;
-import org.jetbrains.kotlin.idea.KotlinBundle;
 import org.jetbrains.kotlin.idea.PluginStartupComponent;
 import org.jetbrains.kotlin.idea.facet.DescriptionListCellRenderer;
 import org.jetbrains.kotlin.idea.util.application.ApplicationUtilsKt;
@@ -86,12 +85,10 @@ public class KotlinCompilerConfigurableTab implements SearchableConfigurable, Co
     private RawCommandLineEditor additionalArgsOptionsField;
     private JLabel additionalArgsLabel;
     private ThreeStateCheckBox generateSourceMapsCheckBox;
-    private TextFieldWithBrowseButton outputPrefixFile;
-    private TextFieldWithBrowseButton outputPostfixFile;
-    private JLabel labelForOutputPrefixFile;
-    private JLabel labelForOutputPostfixFile;
+    private JTextField outputPrefixFile;
+    private JTextField outputPostfixFile;
     private JLabel labelForOutputDirectory;
-    private JTextField outputDirectory;
+    private TextFieldWithBrowseButton outputDirectory;
     private ThreeStateCheckBox copyRuntimeFilesCheckBox;
     private ThreeStateCheckBox keepAliveCheckBox;
     private JCheckBox enablePreciseIncrementalCheckBox;
@@ -140,12 +137,17 @@ public class KotlinCompilerConfigurableTab implements SearchableConfigurable, Co
 
         additionalArgsOptionsField.attachLabel(additionalArgsLabel);
 
-        setupFileChooser(labelForOutputPrefixFile, outputPrefixFile,
-                         KotlinBundle.message("kotlin.compiler.js.option.output.prefix.browse.title"));
-        setupFileChooser(labelForOutputPostfixFile, outputPostfixFile,
-                         KotlinBundle.message("kotlin.compiler.js.option.output.postfix.browse.title"));
-
         labelForOutputDirectory.setLabelFor(outputDirectory);
+
+        outputDirectory.addBrowseFolderListener(
+                "Choose Output Directory",
+                null,
+                project,
+                new FileChooserDescriptor(false, true, false, false, false, false),
+                TextComponentAccessor.TEXT_FIELD_WHOLE_TEXT,
+                false
+        );
+
         copyRuntimeFilesCheckBox.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(@NotNull ChangeEvent e) {
@@ -205,18 +207,6 @@ public class KotlinCompilerConfigurableTab implements SearchableConfigurable, Co
 
     private static String getLanguageVersionOrDefault(@Nullable String languageVersion) {
         return languageVersion != null ? languageVersion : LanguageVersion.LATEST.getVersionString();
-    }
-
-    private static void setupFileChooser(
-            @NotNull JLabel label,
-            @NotNull TextFieldWithBrowseButton fileChooser,
-            @NotNull String title
-    ) {
-        label.setLabelFor(fileChooser);
-
-        fileChooser.addBrowseFolderListener(title, null, null,
-                                            new FileChooserDescriptor(true, false, false, false, false, false),
-                                            TextComponentAccessor.TEXT_FIELD_WHOLE_TEXT, false);
     }
 
     private static boolean isModified(@NotNull TextFieldWithBrowseButton chooser, @Nullable String currentValue) {
@@ -316,15 +306,15 @@ public class KotlinCompilerConfigurableTab implements SearchableConfigurable, Co
                ComparingUtils.isModified(scriptTemplatesField, compilerSettings.scriptTemplates) ||
                ComparingUtils.isModified(scriptTemplatesClasspathField, compilerSettings.scriptTemplatesClasspath) ||
                ComparingUtils.isModified(copyRuntimeFilesCheckBox, compilerSettings.copyJsLibraryFiles) ||
-               ComparingUtils.isModified(outputDirectory, compilerSettings.outputDirectoryForJsLibraryFiles) ||
+               isModified(outputDirectory, compilerSettings.outputDirectoryForJsLibraryFiles) ||
 
                (compilerWorkspaceSettings != null &&
                 (ComparingUtils.isModified(enablePreciseIncrementalCheckBox, compilerWorkspaceSettings.getPreciseIncrementalEnabled()) ||
                  ComparingUtils.isModified(keepAliveCheckBox, compilerWorkspaceSettings.getEnableDaemon()))) ||
 
                ComparingUtils.isModified(generateSourceMapsCheckBox, k2jsCompilerArguments.sourceMap) ||
-               isModified(outputPrefixFile, k2jsCompilerArguments.outputPrefix) ||
-               isModified(outputPostfixFile, k2jsCompilerArguments.outputPostfix) ||
+               ComparingUtils.isModified(outputPrefixFile, k2jsCompilerArguments.outputPrefix) ||
+               ComparingUtils.isModified(outputPostfixFile, k2jsCompilerArguments.outputPostfix) ||
                !getSelectedModuleKind().equals(getModuleKindOrDefault(k2jsCompilerArguments.moduleKind)) ||
 
                !getSelectedJvmVersion().equals(getJvmVersionOrDefault(k2jvmCompilerArguments.jvmTarget));
@@ -471,15 +461,15 @@ public class KotlinCompilerConfigurableTab implements SearchableConfigurable, Co
         return generateSourceMapsCheckBox;
     }
 
-    public TextFieldWithBrowseButton getOutputPrefixFile() {
+    public JTextField getOutputPrefixFile() {
         return outputPrefixFile;
     }
 
-    public TextFieldWithBrowseButton getOutputPostfixFile() {
+    public JTextField getOutputPostfixFile() {
         return outputPostfixFile;
     }
 
-    public JTextField getOutputDirectory() {
+    public TextFieldWithBrowseButton getOutputDirectory() {
         return outputDirectory;
     }
 

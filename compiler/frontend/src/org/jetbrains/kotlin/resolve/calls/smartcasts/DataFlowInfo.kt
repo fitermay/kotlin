@@ -16,7 +16,6 @@
 
 package org.jetbrains.kotlin.resolve.calls.smartcasts
 
-import com.google.common.collect.SetMultimap
 import org.jetbrains.kotlin.config.LanguageVersionSettings
 import org.jetbrains.kotlin.types.KotlinType
 
@@ -28,7 +27,7 @@ interface DataFlowInfo {
 
     val completeNullabilityInfo: Map<DataFlowValue, Nullability>
 
-    val completeTypeInfo: SetMultimap<DataFlowValue, KotlinType>
+    val completeTypeInfo: Map<DataFlowValue, Set<KotlinType>>
 
     /**
      * Returns collected nullability for the given value, NOT taking its stability into account.

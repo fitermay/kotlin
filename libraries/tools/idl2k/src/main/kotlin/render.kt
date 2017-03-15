@@ -148,14 +148,11 @@ private fun GenerateAttribute.isRequiredFunctionArgument(owner: String, function
 private fun GenerateFunction.fixRequiredArguments(parent: String) = copy(arguments = arguments.map { arg -> arg.copy(initializer = if (arg.isRequiredFunctionArgument(parent, name)) null else arg.initializer) })
 
 fun Appendable.render(allTypes: Map<String, GenerateTraitOrClass>, enums: List<EnumDefinition>, typeNamesToUnions: Map<String, List<String>>, iface: GenerateTraitOrClass, markerAnnotation: Boolean = false, mdnCache: MDNDocumentationCache? = null) {
-    try {
-        val url = "https://developer.mozilla.org/en/docs/Web/API/${iface.name}"
-        if (mdnCache?.contains(url) == true) {
-            appendln("/**")
-            appendln(" * [MDN ${iface.name}]($url)")
-            appendln(" */")
-        }
-    } catch (ignore: IOException) {
+    val url = "https://developer.mozilla.org/en/docs/Web/API/${iface.name}"
+    if (mdnCache?.checkInCache(url) == true) {
+        appendln("/**")
+        appendln(" * Exposes the JavaScript [${iface.name}]($url) to Kotlin")
+        appendln(" */")
     }
 
     val allTypesAndEnums = allTypes.keys + enums.map { it.name }

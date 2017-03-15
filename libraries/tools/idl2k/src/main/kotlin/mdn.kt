@@ -4,7 +4,7 @@ import java.io.*
 
 class MDNDocumentationCache(val existing: Set<String>, val nonExisting: Set<String>) {
 
-    fun contains(url: String): Boolean? = when (url) {
+    fun checkInCache(url: String): Boolean? = when (url) {
         in existing -> true
         in nonExisting -> false
         else -> null

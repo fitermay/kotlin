@@ -56,7 +56,7 @@ fun main(args: Array<String>) {
 
     for (iface in definitions) {
         val url = "https://developer.mozilla.org/en/docs/Web/API/${iface.name}"
-        val addUrl = when (oldMdnCache.contains(url)) {
+        val addUrl = when (oldMdnCache.checkInCache(url)) {
             true -> true
             false -> false
             else -> try {

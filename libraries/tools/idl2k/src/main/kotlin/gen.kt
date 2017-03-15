@@ -170,10 +170,10 @@ fun generateTrait(repository: Repository, iface: InterfaceDefinition): GenerateT
             generateBuilderFunction = iface.dictionary
     )
 
-    return arrayLike(result)
+    return markAsArrayLikeIfApplicable(result)
 }
 
-fun arrayLike(iface: GenerateTraitOrClass): GenerateTraitOrClass {
+fun markAsArrayLikeIfApplicable(iface: GenerateTraitOrClass): GenerateTraitOrClass {
     fun isInt(type: Type) = type is SimpleType && type.type == "Int"
 
     val lengthProperty = iface.memberAttributes.singleOrNull { it.name == "length" && isInt(it.type)  }

@@ -1,0 +1,221 @@
+JetFile: lambdaExpressionInString_3.kt
+  PACKAGE_DIRECTIVE
+    <empty list>
+  IMPORT_LIST
+    <empty list>
+  FUN
+    PsiElement(fun)('fun')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('f1')
+    VALUE_PARAMETER_LIST
+      PsiElement(LPAR)('(')
+      VALUE_PARAMETER
+        PsiElement(IDENTIFIER)('p1')
+        PsiElement(COLON)(':')
+        PsiWhiteSpace(' ')
+        TYPE_REFERENCE
+          USER_TYPE
+            REFERENCE_EXPRESSION
+              PsiElement(IDENTIFIER)('Int')
+      PsiElement(COMMA)(',')
+      PsiWhiteSpace(' ')
+      VALUE_PARAMETER
+        PsiElement(IDENTIFIER)('p2')
+        PsiElement(COLON)(':')
+        PsiWhiteSpace(' ')
+        TYPE_REFERENCE
+          USER_TYPE
+            REFERENCE_EXPRESSION
+              PsiElement(IDENTIFIER)('Int')
+      PsiElement(COMMA)(',')
+      PsiWhiteSpace(' ')
+      VALUE_PARAMETER
+        PsiElement(IDENTIFIER)('f')
+        PsiElement(COLON)(':')
+        PsiWhiteSpace(' ')
+        TYPE_REFERENCE
+          FUNCTION_TYPE
+            VALUE_PARAMETER_LIST
+              PsiElement(LPAR)('(')
+              VALUE_PARAMETER
+                TYPE_REFERENCE
+                  USER_TYPE
+                    REFERENCE_EXPRESSION
+                      PsiElement(IDENTIFIER)('Int')
+              PsiElement(COMMA)(',')
+              PsiWhiteSpace(' ')
+              VALUE_PARAMETER
+                TYPE_REFERENCE
+                  USER_TYPE
+                    REFERENCE_EXPRESSION
+                      PsiElement(IDENTIFIER)('Int')
+              PsiElement(RPAR)(')')
+            PsiWhiteSpace(' ')
+            PsiElement(ARROW)('->')
+            PsiWhiteSpace(' ')
+            TYPE_REFERENCE
+              USER_TYPE
+                REFERENCE_EXPRESSION
+                  PsiElement(IDENTIFIER)('String')
+      PsiElement(RPAR)(')')
+    PsiElement(COLON)(':')
+    PsiWhiteSpace(' ')
+    TYPE_REFERENCE
+      USER_TYPE
+        REFERENCE_EXPRESSION
+          PsiElement(IDENTIFIER)('String')
+    PsiWhiteSpace(' ')
+    PsiElement(EQ)('=')
+    PsiWhiteSpace(' ')
+    CALL_EXPRESSION
+      REFERENCE_EXPRESSION
+        PsiElement(IDENTIFIER)('f')
+      VALUE_ARGUMENT_LIST
+        PsiElement(LPAR)('(')
+        VALUE_ARGUMENT
+          REFERENCE_EXPRESSION
+            PsiElement(IDENTIFIER)('p1')
+        PsiElement(COMMA)(',')
+        PsiWhiteSpace(' ')
+        VALUE_ARGUMENT
+          REFERENCE_EXPRESSION
+            PsiElement(IDENTIFIER)('p2')
+        PsiElement(RPAR)(')')
+  PsiWhiteSpace('\n')
+  PROPERTY
+    PsiElement(val)('val')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('vF1')
+    PsiElement(COLON)(':')
+    PsiWhiteSpace(' ')
+    TYPE_REFERENCE
+      FUNCTION_TYPE
+        VALUE_PARAMETER_LIST
+          PsiElement(LPAR)('(')
+          VALUE_PARAMETER
+            TYPE_REFERENCE
+              USER_TYPE
+                REFERENCE_EXPRESSION
+                  PsiElement(IDENTIFIER)('Int')
+          PsiElement(COMMA)(',')
+          PsiWhiteSpace(' ')
+          VALUE_PARAMETER
+            TYPE_REFERENCE
+              USER_TYPE
+                REFERENCE_EXPRESSION
+                  PsiElement(IDENTIFIER)('Int')
+          PsiElement(RPAR)(')')
+        PsiWhiteSpace(' ')
+        PsiElement(ARROW)('->')
+        PsiWhiteSpace(' ')
+        TYPE_REFERENCE
+          USER_TYPE
+            REFERENCE_EXPRESSION
+              PsiElement(IDENTIFIER)('String')
+    PsiWhiteSpace(' ')
+    PsiElement(EQ)('=')
+    PsiWhiteSpace(' ')
+    LAMBDA_EXPRESSION
+      FUNCTION_LITERAL
+        PsiElement(LBRACE)('{')
+        VALUE_PARAMETER_LIST
+          VALUE_PARAMETER
+            PsiElement(IDENTIFIER)('a')
+          PsiElement(COMMA)(',')
+          PsiWhiteSpace(' ')
+          VALUE_PARAMETER
+            PsiElement(IDENTIFIER)('b')
+        PsiWhiteSpace(' ')
+        PsiElement(ARROW)('->')
+        PsiWhiteSpace(' ')
+        BLOCK
+          STRING_TEMPLATE
+            PsiElement(OPEN_QUOTE)('"')
+            LONG_STRING_TEMPLATE_ENTRY
+              PsiElement(LONG_TEMPLATE_ENTRY_START)('${')
+              STRING_TEMPLATE
+                PsiElement(OPEN_QUOTE)('"')
+                LITERAL_STRING_TEMPLATE_ENTRY
+                  PsiElement(REGULAR_STRING_PART)('}')
+                PsiErrorElement:Expecting '"'
+                  <empty list>
+              PsiWhiteSpace('\n')
+              PsiErrorElement:Expecting '}'
+                PsiElement(val)('val')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(IDENTIFIER)('vF2')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(COLON)(':')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(LPAR)('(')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(IDENTIFIER)('Int')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(COMMA)(',')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(IDENTIFIER)('Int')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(RPAR)(')')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(ARROW)('->')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(IDENTIFIER)('String')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(EQ)('=')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(LBRACE)('{')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(IDENTIFIER)('_')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(COMMA)(',')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(IDENTIFIER)('b')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(ARROW)('->')
+            PsiWhiteSpace(' ')
+            PsiErrorElement:Unexpected token in a string template
+              PsiElement(OPEN_QUOTE)('"')
+            LITERAL_STRING_TEMPLATE_ENTRY
+              PsiElement(REGULAR_STRING_PART)('Only b = ')
+            SHORT_STRING_TEMPLATE_ENTRY
+              PsiElement(SHORT_TEMPLATE_ENTRY_START)('$')
+              REFERENCE_EXPRESSION
+                PsiElement(IDENTIFIER)('b')
+            PsiElement(CLOSING_QUOTE)('"')
+        PsiElement(RBRACE)('}')
+        PsiWhiteSpace('\n')
+        PsiElement(fun)('fun')
+        PsiWhiteSpace(' ')
+        PsiElement(IDENTIFIER)('main')
+        PsiElement(LPAR)('(')
+        PsiElement(IDENTIFIER)('args')
+        PsiElement(COLON)(':')
+        PsiWhiteSpace(' ')
+        PsiElement(IDENTIFIER)('Array')
+        PsiElement(LT)('<')
+        PsiElement(IDENTIFIER)('String')
+        PsiElement(GT)('>')
+        PsiElement(RPAR)(')')
+        PsiWhiteSpace(' ')
+        PsiElement(LBRACE)('{')
+        PsiWhiteSpace('\n  ')
+        PsiElement(IDENTIFIER)('f1')
+        PsiElement(LPAR)('(')
+        PsiElement(INTEGER_LITERAL)('1')
+        PsiElement(COMMA)(',')
+        PsiElement(INTEGER_LITERAL)('2')
+        PsiElement(COMMA)(',')
+        PsiWhiteSpace(' ')
+        PsiElement(IDENTIFIER)('vF1')
+        PsiElement(RPAR)(')')
+        PsiWhiteSpace('\n')
+        PsiElement(RBRACE)('}')

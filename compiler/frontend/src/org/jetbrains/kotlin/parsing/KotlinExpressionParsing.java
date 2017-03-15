@@ -1096,6 +1096,12 @@ public class KotlinExpressionParsing extends AbstractKotlinParsing {
             body.setCustomEdgeTokenBinders(CommentBindersKt.PRECEDING_ALL_COMMENTS_BINDER, CommentBindersKt.TRAILING_ALL_COMMENTS_BINDER);
 
             expect(RBRACE, "Expecting '}'");
+
+            // Skip everything else that left in lazy node
+            while (!eof()) {
+                advance();
+            }
+
             literal.done(FUNCTION_LITERAL);
             literalExpression.done(LAMBDA_EXPRESSION);
         }
